@@ -10,6 +10,16 @@
 !.yarn/releases
 !.yarn/versions
 
+# anchor:
+anchor/crud/.anchor/
+anchor/crud/node_modules/
+anchor/crud/solana-release/
+anchor/crud/target/
+anchor/crud/test-ledger/
+anchor/crud/Cargo.lock
+anchor/crud/.migrations/
+anchor/crud/DEPLOY.md
+
 # testing
 /coverage
 
