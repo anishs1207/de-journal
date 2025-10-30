@@ -19,6 +19,7 @@ anchor/crud/test-ledger/
 anchor/crud/Cargo.lock
 anchor/crud/.migrations/
 anchor/crud/DEPLOY.md
+anchor/crud/solana-release-x86_64-unknown-linux-gnu.tar.bz2
 
 # testing
 /coverage
