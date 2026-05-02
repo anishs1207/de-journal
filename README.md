@@ -15,7 +15,7 @@ Check it out here: [https://dejournal.vercel.app/](https://dejournal.vercel.app/
 
 ## Screenshot
 
-![Solana Journal Dapp Screenshot](image.png)
+![Solana Journal Dapp Screenshot](/images/image.png)
 
 ## Tech Stack
 

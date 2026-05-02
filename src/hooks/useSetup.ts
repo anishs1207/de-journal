@@ -9,10 +9,8 @@ import {
 } from "@coral-xyz/anchor";
 import { useMemo } from "react";
 import * as idl from "../idl/journal.json";
-import { PublicKey } from "@solana/web3.js";
 import { Journal } from "@/idl/journal";
 
-// Custom helper to make Wallet Adapter compatible with Anchor
 function createAnchorWallet(wallet: any): AnchorWallet | null {
   if (!wallet || !wallet.publicKey) return null;
 

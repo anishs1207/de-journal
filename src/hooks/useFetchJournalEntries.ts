@@ -19,7 +19,7 @@ export default function useFetchJournalEntries() {
     const accounts = await program.account.journalEntryState.all([
       {
         memcmp: {
-          offset: 8, // skip discriminator
+          offset: 8,
           bytes: owner.toBase58(),
         },
       },

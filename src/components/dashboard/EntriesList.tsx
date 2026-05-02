@@ -53,11 +53,8 @@ export default function EntriesList({ entries, handleUpdate, handleDelete }: Ent
                             </div>
                         </div>
                     </Card>
-
-
                 ))
-            )
-            }
+            )}
         </div >
     );
 }

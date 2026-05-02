@@ -1,163 +1,3 @@
-// "use client";
-
-// import { useState, useEffect } from "react";
-// import { useWallet, useConnection } from "@solana/wallet-adapter-react";
-// import {
-//     useFetchJournalEntries,
-//     useCreateJournalEntry,
-//     useUpdateJournalEntry,
-//     useDeleteJournalEntry,
-// } from "@/hooks"
-// import EntriesList from "./EntriesList";
-// import {
-//     Card,
-//     CardContent,
-//     CardHeader,
-//     CardTitle,
-//     CardDescription,
-// } from "@/components/ui/card";
-// import { Input } from "@/components/ui/input";
-// import { Textarea } from "@/components/ui/textarea";
-// import { Button } from "@/components/ui/button";
-// import { Label } from "@/components/ui/label";
-// import JournalForm from "./JournalForm";
-
-// interface JournalEntry {
-//     title: string;
-//     message: string;
-// }
-
-// export function JournalCard() {
-//     const { publicKey, connected } = useWallet();
-//     const { connection } = useConnection();
-
-//     const createJournal = useCreateJournalEntry();
-//     const updateJournal = useUpdateJournalEntry();
-//     const deleteJournal = useDeleteJournalEntry();
-//     const fetchJournalEntries = useFetchJournalEntries();
-
-//     const [title, setTitle] = useState("");
-//     const [message, setMessage] = useState("");
-//     const [entries, setEntries] = useState<JournalEntry[]>([]);
-//     const [loading, setLoading] = useState(false);
-//     const [status, setStatus] = useState("");
-
-//     // Fetch entries when wallet connects
-//     useEffect(() => {
-//         if (!connected || !publicKey) return;
-
-//         const loadEntries = async () => {
-//             try {
-//                 setLoading(true);
-//                 const fetched = await fetchJournalEntries();
-//                 setEntries(fetched || []);
-//             } catch (err) {
-//                 console.error("Failed to fetch entries:", err);
-//             } finally {
-//                 setLoading(false);
-//             }
-//         };
-//         loadEntries();
-//     }, [connected, publicKey, connection]);
-
-//     const handleCreate = async () => {
-//         if (!title || !message) {
-//             alert("Please fill in both title and message.");
-//             return;
-//         }
-//         try {
-//             setLoading(true);
-//             setStatus("Creating entry...");
-//             const { tx, journalEntryPda } = await createJournal(title, message);
-//             console.log("Created:", tx, journalEntryPda.toBase58());
-//             //@@waits here
-
-//             const fetched = await fetchJournalEntries();
-//             setEntries(fetched || []);
-//             setTitle("");
-//             setMessage("");
-//             setStatus("✅ Entry created successfully!");
-//         } catch (err) {
-//             console.error(err);
-//             setStatus("❌ Failed to create entry.");
-//         } finally {
-//             setLoading(false);
-//             setTimeout(() => setStatus(""), 3000);
-//         }
-//     };
-
-//     const handleUpdate = async (entryTitle: string) => {
-//         const newMessage = prompt("Enter new message:");
-//         if (!newMessage) return;
-
-//         try {
-//             setStatus("Updating entry...");
-//             const { tx } = await updateJournal(entryTitle, newMessage);
-//             console.log("Updated:", tx);
-
-//             const fetched = await fetchJournalEntries();
-//             setEntries(fetched || []);
-//             setStatus("✅ Entry updated!");
-//         } catch (err) {
-//             console.error(err);
-//             setStatus("❌ Failed to update entry.");
-//         } finally {
-//             setTimeout(() => setStatus(""), 3000);
-//         }
-//     };
-
-//     const handleDelete = async (entryTitle: string) => {
-//         if (!confirm("Are you sure you want to delete this entry?")) return;
-
-//         try {
-//             setStatus("Deleting entry...");
-//             const { tx } = await deleteJournal(entryTitle);
-//             console.log("Deleted:", tx);
-
-//             const fetched = await fetchJournalEntries();
-//             setEntries(fetched || []);
-//             setStatus("🗑️ Entry deleted!");
-//         } catch (err) {
-//             console.error(err);
-//             setStatus("❌ Failed to delete entry.");
-//         } finally {
-//             setTimeout(() => setStatus(""), 3000);
-//         }
-//     };
-
-//     if (!connected) {
-//         return (
-//             <Card className="max-w-md mx-auto mt-10 border-zinc-700 bg-zinc-900/60 text-center p-6">
-//                 <CardContent>
-//                     <p className="text-zinc-400">Please connect your wallet to view journal entries.</p>
-//                 </CardContent>
-//             </Card>
-//         );
-//     }
-
-//     return (
-//         <div className="flex flex-col items-center justify-center px-4 py-8">
-//             <JournalForm
-//                 title={title}
-//                 message={message}
-//                 loading={loading}
-//                 status={status}
-//                 setTitle={setTitle}
-//                 setMessage={setMessage}
-//                 handleCreate={handleCreate}
-//             />
-//             <div className="w-full max-w-md mt-6">
-//                 <EntriesList
-//                     entries={entries}
-//                     handleUpdate={handleUpdate}
-//                     handleDelete={handleDelete}
-//                 />
-//             </div>
-//         </div >
-//     );
-// }
-
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -250,11 +90,11 @@ export function JournalCard() {
             setTitle("");
             setMessage("");
             setStatus(
-                `✅ Entry created! View onchain: https://explorer.solana.com/tx/${tx}?cluster=devnet`
+                `Entry created! View onchain: https://explorer.solana.com/tx/${tx}?cluster=devnet`
             );
         } catch (err) {
             console.error(err);
-            setStatus("❌ Failed to create entry.");
+            setStatus("Failed to create entry.");
         } finally {
             setLoading(false);
             setTimeout(() => setStatus(""), 5000);
@@ -288,11 +128,11 @@ export function JournalCard() {
             const fetched = await fetchJournalEntries();
             setEntries(fetched || []);
             setStatus(
-                `✅ Entry updated! View onchain: https://explorer.solana.com/tx/${tx}?cluster=devnet`
+                `Entry updated! View onchain: https://explorer.solana.com/tx/${tx}?cluster=devnet`
             );
         } catch (err) {
             console.error(err);
-            setStatus("❌ Failed to update entry.");
+            setStatus("Failed to update entry.");
         } finally {
             setModalType(null);
             setTimeout(() => setStatus(""), 5000);
@@ -308,11 +148,11 @@ export function JournalCard() {
             const fetched = await fetchJournalEntries();
             setEntries(fetched || []);
             setStatus(
-                `🗑️ Entry deleted! View onchain: https://explorer.solana.com/tx/${tx}?cluster=devnet`
+                `Entry deleted! View onchain: https://explorer.solana.com/tx/${tx}?cluster=devnet`
             );
         } catch (err) {
             console.error(err);
-            setStatus("❌ Failed to delete entry.");
+            setStatus("Failed to delete entry.");
         } finally {
             setModalType(null);
             setTimeout(() => setStatus(""), 5000);

@@ -8,7 +8,7 @@ export default function NavBar() {
         <header className="sticky top-0 z-50 flex flex-row md:flex-row items-center md:justify-between px-4 md:px-8 py-4 border-b border-border/50 bg-background/80 backdrop-blur-xl shadow-sm gap-3 md:gap-0">
 
             {/* Brand */}
-            <div className="flex items-center justify-center md:justify-start w-full group cursor-pointer">
+            <div className="flex items-center justify-between md:justify-start w-full group cursor-pointer">
                 <div className="flex items-center gap-3">
                     <SiSolana className="w-8 h-8 text-[#9945FF] transition-all duration-300 group-hover:rotate-12 group-hover:scale-110" />
                     <span className="ml-4 text-xl md:text-2xl font-semibold tracking-tight text-white/90 group-hover:text-[#9945FF] transition-all duration-300">

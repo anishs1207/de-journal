@@ -12,8 +12,6 @@ export default function Home() {
           <JournalCard />
         </div>
       </main>
-
-      {/* <Footer /> */}
     </div>
   );
 }

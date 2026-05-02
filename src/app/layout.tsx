@@ -45,6 +45,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-
-// instad of showing botj select wallt and disconnect walet button onceshow once based on it and make it good in smaller screens also and make the foiter dejounral appear at bottom and the heading deJOunral is not appearing beside logo fix tht and also the lease connect your wallet does not look asthetic make it look good
