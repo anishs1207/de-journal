@@ -120,3 +120,41 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Solana Wallet Button Overrides */
+.wallet-adapter-button {
+  font-family: inherit !important;
+}
+
+.wallet-button-container .wallet-adapter-button {
+  background-color: #4f46e5 !important; /* indigo-600 */
+  border-radius: 9999px !important;
+  height: 40px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s !important;
+}
+
+.wallet-button-container .wallet-adapter-button:hover {
+  background-color: #4338ca !important; /* indigo-700 */
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.wallet-button-container-large .wallet-adapter-button {
+  background: linear-gradient(to right, #9333ea, #4f46e5) !important;
+  border-radius: 9999px !important;
+  padding: 0 32px !important;
+  height: 56px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s !important;
+  box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2) !important;
+}
+
+.wallet-button-container-large .wallet-adapter-button:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+  box-shadow: 0 20px 25px -5px rgba(79, 70, 229, 0.3) !important;
+}
+

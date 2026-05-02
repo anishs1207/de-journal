@@ -162,6 +162,7 @@
 
 import { useState, useEffect } from "react";
 import { useWallet, useConnection } from "@solana/wallet-adapter-react";
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import {
     useFetchJournalEntries,
     useCreateJournalEntry,
@@ -320,15 +321,32 @@ export function JournalCard() {
 
     if (!connected) {
         return (
-            <Card className="max-w-md mx-auto mt-10 border-zinc-700 bg-zinc-900/60 text-center p-6">
-                <CardContent>
-                    <p className="text-zinc-400">
-                        Please connect your wallet to view journal entries.
-                    </p>
-                </CardContent>
-            </Card>
+            <div className="flex flex-col items-center justify-center min-h-[60vh] px-4">
+                <Card className="w-full max-w-md border-border/50 bg-gradient-to-b from-card/80 to-card shadow-2xl backdrop-blur-sm overflow-hidden relative group">
+                    <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/10 via-transparent to-blue-500/10 opacity-50" />
+                    <CardHeader className="text-center relative pt-12">
+                        <div className="mx-auto w-20 h-20 bg-indigo-500/10 rounded-2xl flex items-center justify-center mb-6 ring-1 ring-indigo-500/20 group-hover:scale-110 transition-transform duration-300">
+                            <svg className="w-10 h-10 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                            </svg>
+                        </div>
+                        <CardTitle className="text-2xl font-bold bg-gradient-to-r from-white to-zinc-400 bg-clip-text text-transparent">
+                            Authentication Required
+                        </CardTitle>
+                        <CardDescription className="text-zinc-400 text-lg mt-2">
+                            Please connect your Solana wallet to access your decentralized journal entries.
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent className="flex flex-col items-center pb-12 relative">
+                        <div className="wallet-button-container-large">
+                            <WalletMultiButton className="!bg-gradient-to-r !from-purple-600 !to-indigo-600 hover:!opacity-90 !rounded-full !px-8 !py-6 !h-auto !text-base !font-semibold !transition-all !duration-300 shadow-lg shadow-indigo-500/20" />
+                        </div>
+                    </CardContent>
+                </Card>
+            </div>
         );
     }
+
 
     return (
         <div className="flex flex-col items-center justify-center px-4 py-8">
